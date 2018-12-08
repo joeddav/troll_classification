@@ -1,7 +1,7 @@
 import pandas as pd
 
 print("Loading data...")
-non_troll_df = pd.read_csv('data/non_troll_data.csv', index_col='Unnamed: 0')
+non_troll_df = pd.read_json('data/non_troll_data.json')
 
 columns_to_remove = [
     "id_str",
@@ -46,6 +46,6 @@ non_troll_df["is_a_retweet"] = non_troll_df.retweeted_status.notnull()
 del non_troll_df["retweeted_status"]
 
 print("Saving simplified dataset...")
-non_troll_df.to_csv("data/non_troll_data_simplified.csv")
+non_troll_df.to_json("data/non_troll_data_simplified.json")
 
 print("Done!")
