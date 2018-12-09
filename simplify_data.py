@@ -23,22 +23,25 @@ columns_to_remove = [
     "quoted_status_id_str"
 ]
 
-def value_from_dict(key):
+def get_followers(x):
+    try:
+        return int(x['followers_count'])
+    except:
+        return 0
 
-    def inner(string):
-        try:
-            return eval(string)[key]
-        except TypeError:
-            return None
-    
-    return inner
+def get_following(x):
+    try:
+        return int(x['friends_count'])
+    except:
+        return 0
 
 print("Removing unnecessary columns...")
 non_troll_df.drop(columns_to_remove, axis=1, inplace=True)
 
 print("Copying followers and following from user...")
-non_troll_df["followers"] = non_troll_df["user"].apply(value_from_dict("followers_count"))
-non_troll_df["following"] = non_troll_df["user"].apply(value_from_dict("following"))
+non_troll_df["followers"] = non_troll_df["user"].apply(get_followers)
+# `following` is deprecated: use `friends_count`
+non_troll_df["following"] = non_troll_df["user"].apply(get_following) 
 del non_troll_df["user"]
 
 print("Creating retweet status feature...")

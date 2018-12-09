@@ -11,6 +11,7 @@ for json_filename in json_filenames:
     dataframes.append(file_df)
 print("Aggregating dataframes...")
 aggregated_df = pd.concat(dataframes)
+aggregated_df = aggregated_df.reset_index()
 target_filename = os.path.join("data", "non_troll_data.json")
 print("Saving aggregated df to {}".format(target_filename))
 aggregated_df.to_json(target_filename)
