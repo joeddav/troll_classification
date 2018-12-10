@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-primer
 title: Twitter Troll Detection
 description: Getting rid of the Trolls!
 baseurl:
