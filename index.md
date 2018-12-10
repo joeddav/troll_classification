@@ -2,14 +2,18 @@
 title: Twitter Troll Detection
 ---
 
-This is the home page
+Welcome to our CS209a Project: Twitter Troll Detection!
 
-## Lets have fun
+## Group Members
+- Joe Davidson
+- Julien Laasri
+- Abhimanyu Talwar
+- Dylan Randle
 
->here is a quote
+## Project Statement & Objectives
 
-Here is *emph* and **bold**.
-
-Here is some inline math $\alpha = \frac{\beta}{\gamma}$ and, of-course, E rules:
-
-$$ G_{\mu\nu} + \Lambda g_{\mu\nu}  = 8 \pi T_{\mu\nu} . $$
+We live in times of unprecedented technological advancement. One of the greatest developments in
+society and culture today are social media websites such as Facebook and Twitter. These vast online
+networks are used ubiquitously around the glove for sharing information. Most notably, Twitter was
+recently used by "troll" agents with the aim of swaying public opinion and influencing the results
+of the election.
