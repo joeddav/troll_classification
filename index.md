@@ -52,7 +52,7 @@ procedure, and use classification accuracy as our main objective metric.
 - TF-IDF / Naive Bayes:
 - Neural Network:
 
-### Extensions!
+### Extensions
 
 To make things more interesting, we extend our problem in a few ways:
 
