@@ -2,11 +2,6 @@
 title: Detecting Trolls, Saving Democracy
 ---
 
-## Contents
-{:.no_toc}
-*  
-{: toc}
-
 Welcome to our CS209a Project: Twitter Troll Detection!
 
 ## Group Members
