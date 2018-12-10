@@ -1,14 +1,4 @@
----
-title: EDA
-nav_include: 1
-notebook: notebooks/more_eda.ipynb
----
 
-
-## Contents
-{:.no_toc}
-*  
-{: toc}
 
 
 ```python
@@ -93,6 +83,8 @@ filter_troll_dates=lambda x: pd.to_datetime(x.split()[0])
 ```
 
 
+## Distributions of dates
+
 
 
 ```python
@@ -113,7 +105,7 @@ ax.tick_params(axis='x', rotation=45)
 
 
 
-![png](more_eda_files/more_eda_8_0.png)
+![png](more_eda_files/more_eda_9_0.png)
 
 
 *Remark*: We see that our distributions of tweets over time are not equal. What we will have to do in our modeling is to stratify by tweet post date, and/or filter our the troll tweets that fall outside of the range of the non-troll tweets. We show an example below.
@@ -136,7 +128,7 @@ troll_in_range['publish_date'] = troll_in_range['publish_date'].apply(pd.to_date
 
 ```python
 troll_in_range = troll_in_range[
-    (troll_in_range.publish_date >= '2016-07-01') &
+    (troll_in_range.publish_date >= '2016-07-01') & 
     (troll_in_range.publish_date <= '2016-11-10')]
 ```
 
@@ -162,6 +154,8 @@ troll_in_range.to_csv('data/troll_jun_to_nov')
 ```
 
 
+## Corrected distributions
+
 
 
 ```python
@@ -182,10 +176,12 @@ ax.tick_params(axis='x', rotation=45)
 
 
 
-![png](more_eda_files/more_eda_15_0.png)
+![png](more_eda_files/more_eda_17_0.png)
 
 
 *Remark*: now the post dates line up much more closely, and we can be more confident that the underlying topics are more closely aligned, and that our machine learning models will pick up on troll-like behavior, instead of topics.
+
+## Distributions of followers
 
 
 
@@ -209,10 +205,12 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_17_0.png)
+![png](more_eda_files/more_eda_20_0.png)
 
 
 *Remark*: We see that the non-troll tweets are generally associated with a much wider distribution of followers. This makes sense, and is partially a result of a small number of Twitter user anomalies (e.g. the user on the far right with ~42 million followes!).
+
+## Distributions of Following
 
 
 
@@ -230,10 +228,12 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_19_0.png)
+![png](more_eda_files/more_eda_23_0.png)
 
 
 *Remark*: we again see that the distribution of the number of users that a given Twitter user is following is much wider for non-trolls than for trolls. This makes intuitive sense as we would expect an authentic user to be following a larger, more varied set of users; while a troll, because their account is based not on interest in topics but on spreading certain thoughts, may just follow users that help them accomplish their goal.
+
+## Retweets
 
 
 
@@ -253,7 +253,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_21_0.png)
+![png](more_eda_files/more_eda_26_0.png)
 
 
 *Remark*: it appears that trolls retweet slightly more frequently than non-trolls.
@@ -283,6 +283,8 @@ link_percentage_non_troll = compute_link_percentage(nontroll, 'text')
 ```
 
 
+## Links
+
 
 
 ```python
@@ -298,7 +300,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_26_0.png)
+![png](more_eda_files/more_eda_32_0.png)
 
 
 *Remark*: it appears as though trolls are more likely to post a link with their tweets. This is a useful binary feature that we can add.
@@ -329,3 +331,4 @@ nontroll.to_json('non_troll_data_simplified_v4.json')
 ```python
 troll_in_range.to_csv('troll_jun_to_nov_v2.csv')
 ```
+
