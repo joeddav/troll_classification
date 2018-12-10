@@ -1,4 +1,14 @@
+---
+title: EDA
+nav_include: 1
+notebook: notebooks/more_eda.ipynb
+---
 
+
+## Contents
+{:.no_toc}
+*  
+{: toc}
 
 
 ```python
@@ -128,7 +138,7 @@ troll_in_range['publish_date'] = troll_in_range['publish_date'].apply(pd.to_date
 
 ```python
 troll_in_range = troll_in_range[
-    (troll_in_range.publish_date >= '2016-07-01') & 
+    (troll_in_range.publish_date >= '2016-07-01') &
     (troll_in_range.publish_date <= '2016-11-10')]
 ```
 
@@ -331,4 +341,3 @@ nontroll.to_json('non_troll_data_simplified_v4.json')
 ```python
 troll_in_range.to_csv('troll_jun_to_nov_v2.csv')
 ```
-
