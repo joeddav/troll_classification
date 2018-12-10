@@ -1,19 +1,17 @@
 ---
 title: Sentence Embeddings
 nav_include: 2
-notebook: notebooks/sentence_embedding_eda.ipynb
+notebook: sentence_embedding_eda.ipynb
 ---
-
 
 ## Contents
 {:.no_toc}
-*  
+*
 {: toc}
 
 
 
 ```python
-# import stuff
 %load_ext autoreload
 %autoreload 2
 %matplotlib inline
@@ -38,7 +36,6 @@ import jsonpickle
 ```python
 api_key = '02GS3Mo7IkbOZzHlkjMVXLaxh'
 api_secret = '50o182mornUFvpVJU36ij9zueUvfQMPOa3wz8jabYbzw3cIEyO'
-# Replace the API_KEY and API_SECRET with your application's key and secret.
 auth = tweepy.AppAuthHandler(api_key, api_secret)
 
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
@@ -350,7 +347,6 @@ troll_tweets[1][0:5]
 
 
 ```python
-# Load model
 from models import InferSent
 model_version = 1
 MODEL_PATH = "../encoder/infersent%s.pkl" % model_version
@@ -364,7 +360,6 @@ model.load_state_dict(torch.load(MODEL_PATH))
 
 
 ```python
-# Keep it on CPU or put it on GPU
 use_cuda = False
 model = model.cuda() if use_cuda else model
 ```
@@ -373,7 +368,6 @@ model = model.cuda() if use_cuda else model
 
 
 ```python
-# If infersent1 -> use GloVe embeddings. If infersent2 -> use InferSent embeddings.
 W2V_PATH = '../dataset/GloVe/glove.840B.300d.txt' if model_version == 1 else '../dataset/fastText/crawl-300d-2M.vec'
 model.set_w2v_path(W2V_PATH)
 ```
@@ -382,7 +376,6 @@ model.set_w2v_path(W2V_PATH)
 
 
 ```python
-# Load embeddings of K most frequent words
 model.build_vocab_k_words(K=100000)
 ```
 
@@ -485,7 +478,6 @@ tfm_all_tweets.shape
 
 
 ```python
-# tfm_test = pca.transform(test_embed)
 ```
 
 
@@ -499,6 +491,8 @@ all_troll = troll1 + troll2 + troll3
 ```
 
 
+## Visualize Principal Components
+
 
 
 ```python
@@ -506,7 +500,6 @@ fig = plt.gcf()
 fig.set_size_inches(10, 7)
 _ = plt.scatter(tfm_all_tweets[0:troll1,0], tfm_all_tweets[0:troll1,1],  s=20, alpha=0.5, color='green', label='Identified Troll 1')
 _ = plt.scatter(tfm_all_tweets[troll1:(troll1 + troll2),0], tfm_all_tweets[troll1:(troll1 + troll2),1], s=20, alpha=0.5, color='red', label='Identified Troll 2')
-# _ = plt.scatter(tfm_all_tweets[(troll1 + troll2):all_troll,0], tfm_all_tweets[(troll1 + troll2):all_troll,1], s=25, alpha=0.45, color='k', label='Identified Troll 3')
 _ = plt.scatter(tfm_all_tweets[all_troll:,0], tfm_all_tweets[all_troll:,1], s=20, alpha=0.1, color='blue', label='Random Political Tweets')
 _ = plt.legend(loc='best', fontsize=14)
 _ = plt.xlabel('Principal Component 1', fontsize=14)
@@ -516,7 +509,7 @@ _ = plt.xlim(-3, 4)
 
 
 
-![png](sentence_embedding_eda_files/sentence_embedding_eda_33_0.png)
+![png](sentence_embedding_eda_files/sentence_embedding_eda_34_0.png)
 
 
 
