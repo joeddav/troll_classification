@@ -1,5 +1,5 @@
 ---
-title: Twitter Troll Detection: Coming to a Social Network Near You
+title: Detecting Trolls, Saving Democracy
 ---
 
 Welcome to our CS209a Project: Twitter Troll Detection!
