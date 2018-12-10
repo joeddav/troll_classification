@@ -16,7 +16,7 @@ Welcome to our CS209a Project: Twitter Troll Detection!
 
 We live in times of unprecedented technological advancement. Some of the greatest developments in
 society and culture today are social media websites such as Facebook and Twitter. These vast online
-networks are used ubiquitously around the glove for connecting with friends and sharing information.
+networks are used ubiquitously around the globe for connecting with friends and sharing information.
 While this undoubtedly provides a lot of positive utility in most cases, there are situations where
 these unregulated social networks can be harmful. Most notably, Twitter was recently used by "troll"
 agents with the aim of swaying public opinion and influencing the results of the 2016 U.S. election.
