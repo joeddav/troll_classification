@@ -1,0 +1,9 @@
+theme: jekyll-theme-minimal
+title: Twitter Troll Detection
+description: Getting rid of the Trolls!
+baseurl:
+markdown: kramdown
+kramdown:
+    math_engine: mathjax
+    input: GFM
+    syntax_highlighter: rouge
