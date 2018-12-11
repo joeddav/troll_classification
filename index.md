@@ -3,6 +3,7 @@ title: Detecting Trolls, Saving Democracy
 ---
 
 ![seas-iacs](pics/SEAS_IACS.png)
+
 Welcome to our CS209a Project: Twitter Troll Detection!
 
 ## Group Members
