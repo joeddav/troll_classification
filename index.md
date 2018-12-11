@@ -64,11 +64,13 @@ To make things more interesting, we extend our problem in a few ways:
 
 ### Models & Results
 
-- TF-IDF / Naive Bayes:
-- Logistic Regression:
-- SVM:
-- Neural Network:
-- LSTM:
+| Model | Standard Split | Temporal Split | Semi-Supervised |
+|:-----:|:--------------:|:--------------:|:---------------:|
+|Naive Bayes | 0.0 | 0.0 | 0.0 |
+|Logistic Regression | 0.0 | 0.0 | 0.0 |
+|SVM | 0.0 | 0.0 | 0.0 |
+|Neural Net | 0.0 | 0.0 | 0.0 |
+|LSTM | 0.0 | 0.0 | 0.0 |
 
 ### Conclusions
 
