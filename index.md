@@ -39,8 +39,9 @@ but these concerns are dampened by the fact that the overall population of troll
 compared to regular users, and that Twitter actively removes tweets from troll users (resulting in an
 even smaller proportion of tweets which come from trolls).
 
-Following the results of our [EDA](https://joeddav.github.io/troll_classification/more_eda.html), we temporally slice and stratify our data such that
-the distribution of tweet post dates are approximately equal.
+Following the results of our [EDA](https://joeddav.github.io/troll_classification/more_eda.html), we clean, temporally slice, and stratify our data such that the distribution of tweet post dates are approximately equal, as shown [here](https://joeddav.github.io/troll_classification/cleaning.html). When all is said and done, the temporal distribution of the data looks as follows.
+
+![temporal-histogram](pics/temporal_histogram.png)
 
 We perform further analysis of the dataset and construct a baseline [Naive Bayes](https://joeddav.github.io/troll_classification/naive_bayes.html) model.
 
@@ -66,11 +67,11 @@ To make things more interesting, we extend our problem in a few ways:
 
 | Model | Standard Split | Temporal Split | Semi-Supervised |
 |:-----:|:--------------:|:--------------:|:---------------:|
-|Naive Bayes | 0.0 | 0.0 | 0.0 |
+|Bag of Words | 0.0 | 0.0 | 0.0 |
+|TF-IDF | 0.0 | 0.0 | 0.0 |
 |Logistic Regression | 0.0 | 0.0 | 0.0 |
 |SVM | 0.0 | 0.0 | 0.0 |
 |Neural Net | 0.0 | 0.0 | 0.0 |
-|LSTM | 0.0 | 0.0 | 0.0 |
 
 ### Conclusions
 
