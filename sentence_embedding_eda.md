@@ -6,7 +6,7 @@ notebook: sentence_embedding_eda.ipynb
 
 ## Contents
 {:.no_toc}
-*
+* 
 {: toc}
 
 
