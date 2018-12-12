@@ -1,12 +1,12 @@
 ---
 title: Sentence Embeddings
-nav_include: 2
+nav_include: 3
 notebook: sentence_embedding_eda.ipynb
 ---
 
 ## Contents
 {:.no_toc}
-* 
+*
 {: toc}
 
 
