@@ -120,9 +120,10 @@ A few things to note are:
 
 Since Logistic Regression is an easily interpretable model (the coefficients of a feature represent the log-odds
 for the predicted probability), we were able to extract the top 10 most important features in predicting
-trolls and non-trolls. It is exciting that some of the features and words we identified in EDA showed up [here](https://joeddav.github.io/troll_classification/LogisticRegression.html#analysis-of-coefficients).
+trolls and non-trolls. It is exciting that some of the features and words we identified in EDA showed up [here](https://joeddav.github.io/troll_classification/LogisticRegression.html#analysis-of-coefficients). One example of a word that our model found particularly useful
+for identifying trolls is the "trumpforpresident" hashtag.
 
-We also provide some interesting visualizations of the principal components of the neural network's [here](https://joeddav.github.io/troll_classification/TwitterNet_Sentence_Embeddings.html#introduction).
+We also provide some interesting visualizations of the principal components of the neural network's layers [here](https://joeddav.github.io/troll_classification/TwitterNet_Sentence_Embeddings.html#introduction).
 
 ### Conclusions
 
