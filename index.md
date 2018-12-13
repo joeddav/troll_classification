@@ -95,15 +95,15 @@ We invite you to click on the above links for an in-depth look at each of the me
 
 Below we present the percent accuracy in classifying troll vs. non-troll. As you can see, Logistic Regression
 performed the best, with the neural network coming in a close second. It is also interesting to note that the
-Logistic Regression model fits the data in less than 10 seconds on a 6-core  machine, while SVM takes 40 minutes
-on the same machine. On a GPU, the neural network takes roughly 3-4 minutes.
+Logistic Regression and Naive Bayes models fit the data in less than 10 seconds on a 6-core  machine, while SVM
+takes 40 minutes on the same machine. On a GPU, the neural network takes roughly 3-4 minutes to fit.
 
-|       |  Random Split  ||  Temporal Split  ||
+|       |  Random Split  |  Temporal Split  |
 | Model | Train | Test | Train | Test |
 |:-----:|:-----:|:----:|:-----:|:----:|
-|Naive Bayes (BoW) | 0.0 | 0.0 | 0.0 | 0.0 |
-|Naive Bayes (TF-IDF) | 0.0 | 0.0 | 0.0 | 0.0 |
-|Logistic Regression (BoW) | 97.3 | **96.6** | 97.5 | **95.8** |
+|Naive Bayes (BoW) | 96.0 | 88.1 | 95.3 | 84.4 |
+|Naive Bayes (TF-IDF) | 95.1 | 85.8 | 96.0 | 80.3 |
+|Logistic Regression (BoW) | **97.3** | **96.7** | **97.5** | **95.9** |
 |SVM (BoW) | 0.0 | 0.0 | 0.0 | 0.0 |
 |Neural Net (Embedding) | 96.4 | 96.1 | 96.5 | 95.3 |
 
