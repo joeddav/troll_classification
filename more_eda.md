@@ -17,6 +17,8 @@ import matplotlib.pyplot as plt
 ```
 
 
+## Read in data
+
 
 
 ```python
@@ -114,7 +116,7 @@ ax.tick_params(axis='x', rotation=45)
 
 
 
-![png](more_eda_files/more_eda_9_0.png)
+![png](more_eda_files/more_eda_10_0.png)
 
 
 *Remark*: We see that our distributions of tweets over time are not equal. What we will have to do in our modeling is to stratify by tweet post date, and/or filter our the troll tweets that fall outside of the range of the non-troll tweets. We show an example below.
@@ -185,7 +187,7 @@ ax.tick_params(axis='x', rotation=45)
 
 
 
-![png](more_eda_files/more_eda_17_0.png)
+![png](more_eda_files/more_eda_18_0.png)
 
 
 *Remark*: now the post dates line up much more closely, and we can be more confident that the underlying topics are more closely aligned, and that our machine learning models will pick up on troll-like behavior, instead of topics.
@@ -214,7 +216,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_20_0.png)
+![png](more_eda_files/more_eda_21_0.png)
 
 
 *Remark*: We see that the non-troll tweets are generally associated with a much wider distribution of followers. This makes sense, and is partially a result of a small number of Twitter user anomalies (e.g. the user on the far right with ~42 million followes!).
@@ -237,7 +239,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_23_0.png)
+![png](more_eda_files/more_eda_24_0.png)
 
 
 *Remark*: we again see that the distribution of the number of users that a given Twitter user is following is much wider for non-trolls than for trolls. This makes intuitive sense as we would expect an authentic user to be following a larger, more varied set of users; while a troll, because their account is based not on interest in topics but on spreading certain thoughts, may just follow users that help them accomplish their goal.
@@ -262,7 +264,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_26_0.png)
+![png](more_eda_files/more_eda_27_0.png)
 
 
 *Remark*: it appears that trolls retweet slightly more frequently than non-trolls.
@@ -309,7 +311,7 @@ plt.show()
 
 
 
-![png](more_eda_files/more_eda_32_0.png)
+![png](more_eda_files/more_eda_33_0.png)
 
 
 *Remark*: it appears as though trolls are more likely to post a link with their tweets. This is a useful binary feature that we can add.

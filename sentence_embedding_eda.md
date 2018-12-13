@@ -1,17 +1,31 @@
 ---
 title: Sentence Embeddings
 nav_include: 3
-notebook: sentence_embedding_eda.ipynb
+notebook: notebooks/sentence_embedding_eda.ipynb
 ---
 
 ## Contents
 {:.no_toc}
-* 
+*  
 {: toc}
+
+
+# Summary
+This notebook contains code for our preliminary EDA using sentence embeddings. We have used Facebook's InferSent for encoding Tweets into sentence embedding vectors of length $4,096$. For our analysis we considered about ~11k political themed tweets from 2016-2017, and converted them into embeddings. We did the same for ~1000 tweets from two identifed troll accounts. We then plotted the first two principal components of the tweet embeddings (see Figure 1 below), and identified that:
+
+* Tweets from each troll were clustered together among the scatter plot of principal components.
+* More importantly, the clusters of both trolls occupied the same location in the scatter plot.
+
+
+**Fig. 1: First Two Principal Components of Sentence Embeddings of two Confirmed Trolls and ~10k other political tweets**
+<img src='pics/sentence_eda.png' height='500' width='700'>
+
+## Code use for our Sentence Embeddings EDA
 
 
 
 ```python
+# import stuff
 %load_ext autoreload
 %autoreload 2
 %matplotlib inline
@@ -36,6 +50,7 @@ import jsonpickle
 ```python
 api_key = '02GS3Mo7IkbOZzHlkjMVXLaxh'
 api_secret = '50o182mornUFvpVJU36ij9zueUvfQMPOa3wz8jabYbzw3cIEyO'
+# Replace the API_KEY and API_SECRET with your application's key and secret.
 auth = tweepy.AppAuthHandler(api_key, api_secret)
 
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
@@ -146,22 +161,6 @@ data.shape
 
 
 ```python
-data['publish_date'].unique()
-```
-
-
-
-
-
-    array(['2/16/2016 23:15', '2/16/2016 5:41', '2/16/2016 6:10', ...,
-           '12/21/2016 9:23', '12/22/2015 0:11', '12/22/2015 0:30'],
-          dtype=object)
-
-
-
-
-
-```python
 data.columns
 ```
 
@@ -178,93 +177,7 @@ data.columns
 
 
 
-
-
-```python
-data['author'].unique()
-```
-
-
-
-
-
-    array(['10_GOP', '1488REASONS', '1D_NICOLE_', '1ERIK_LEE', '1LORENAFAVA1',
-           '2NDHALFONION', '459JISALGE', '4EVER1937', '4EVER_SUSAN',
-           '4MYSQUAD', '5EMEN5EMENICH', '5L5_5L5', '666STEVEROGERS', '6DRUZ',
-           '71BILALJAMIL1', 'AAASSSSSHHH', 'AAATEST1234', 'AAAVADAKEDAVRAA',
-           'AAGN1AA', 'AANTIRACIST', 'AARONALLENALL', 'AARON_M1TCHELL',
-           'ABALAKOVAYLIA', 'ABBASSHUKRI', 'ABBYLOPTRT', 'ABELLABAB',
-           'ABIGAILCALLME', 'ABIGAILSSILK', 'ABIISSROSB', 'ABISADMASST',
-           'ABMERRLINS', 'ABOUTPOLIT', 'ABRAMSREBEKAH', 'ABUNUWASA',
-           'ABU_UBAIDA2', 'ACAB_ZONE', 'ACAPARELLA', 'ACEJINEV',
-           'ACHSAHORKHAN', 'ACTIVEMIKR', 'ADALESTRTM', 'ADAMCHAPMANJR',
-           'ADAMMA_DEFOND', 'ADAM_MATHISSS', 'ADDIE_HOL', 'ADELE_BROCK',
-           'ADELIINESTRT', 'ADELINE_GS', 'ADELISTRTT', 'ADKEZLATE',
-           'ADLEESTTT', 'ADLEESWOD', 'ADNNELSTR', 'ADRGREERR', 'ADRIANAMFTTT',
-           'ADRIASNSS', 'ADRIENNE_GG', 'ADRI_LOW_R', 'AESPARZZA', 'AFEELIUTR',
-           'AFIFYAMIRA1', 'AFONIA_ZHILCOV', 'AFONINMIXAIL', 'AFRICAVSERDCE',
-           'AFUCKINSIDE', 'AGAFONME', 'AGAINUKRFAKE', 'AGATA_ALEXEEVA',
-           'AGITPOLK', 'AGNESGRHM', 'AGNESMLTRT', 'AGNESSTRYT',
-           'AHMADHUSSEINII', 'AHMADRADJAB', 'AHMADYOUSEF23', 'AHMADYUSUFF03',
-           'AHMANSOUR91061', 'AHNORDYK', 'AHOGAN_AM', 'AH_VERONIKI',
-           'AIDEN7757', 'AKOROMYSLOVA', 'ALANISSTRS', 'ALAXXATR', 'ALAXXATRT',
-           'ALBELITATRTS', 'ALBERTA_HAYNESS', 'ALBERTMORENMORE',
-           'ALBUQUERQUEON', 'ALDRICH420', 'ALECMOOOOODY', 'ALEESATRS',
-           'ALEKSANISIMOF', 'ALEKSEY_SOKOL_', 'ALEMICHLESS', 'ALENAZELDINA',
-           'ALESISTRTT', 'ALESSIAWILLSON', 'ALEXBORONIN', 'ALEXHARRITONOV',
-           'ALEXISFOXIE', 'ALEXLOVESSHENNA', 'ALEXMMYER', 'ALEXSVLADIMIROV',
-           'ALEXWARNINGU', 'ALEXXBELYAEV', 'ALEXXDRTRR', 'ALEX_DUGIN',
-           'ALEX___ANT', 'ALFNEWDAY', 'ALFREDBENBEN', 'ALFREDTHREE',
-           'ALI27HUSSEIN', 'ALIDANILOVSKAYA', 'ALIISTRR', 'ALINAANTONCHIK',
-           'ALINALINKI_', 'ALINANOVIKOV022', 'ALINAVIATKOVA', 'ALINA_9_1',
-           'ALISA_FRATKINA', 'ALISONDAVOL', 'ALIZASSHIELD', 'ALLAHOMORE',
-           'ALLBERRTOSS', 'ALLFORPETERSONS', 'ALMOSTSAINTGIRL', 'ALODOY',
-           'ALTMANBELINDA', 'ALTMANCOON', 'ALVA_MC_GHEE', 'ALWAYSHUNGRYBAE',
-           'ALW_ILL', 'ALYSSABEDOLLA', 'AMALIAHULICK', 'AMALIA_PETTY',
-           'AMAMCAMCAM', 'AMANDAVGREEN', 'AMBAASTRT', 'AMBBERTHTT',
-           'AMBERDAVV', 'AMBERLINETR', 'AMBERRPAR', 'AMCONVOICE',
-           'AMELCREECH', 'AMELIEBALDWIN', 'AMELINAASTR', 'AMERICANALBERT',
-           'AMIISTRS', 'AMIRAFERRR', 'AMIRAHPOPE', 'AMIRICANWILL',
-           'AMIYAHSAMUELS', 'AMYGRABMYESSAY', 'AMYMUSICLL', 'AMYYSLEGENTR',
-           'AMYYSSTS', 'AMYYTHOSSMA', 'ANAAISLEC', 'ANAALESSIS',
-           'ANASTASIAR777', 'ANASTASSIAZZ', 'ANASTASSITR', 'ANATOLINEMCOV',
-           'ANATOLRMNFF', 'ANBIVALENTNAYA', 'ANCARICTRS', 'ANDEERLWR',
-           'ANDEYNESTEROV', 'ANDIOSMARRTRUMP', 'ANDREASEULITZ', 'ANDREBAKIN',
-           'ANDREBEAULEGER', 'ANDREJFROLOV69', 'ANDREWHEDDD',
-           'ANDREYYKONDRAT1', 'ANDREY_LISCHINA', 'ANDRISNABRT', 'ANDRIYCCCP',
-           'ANDROFAG', 'ANDRREETRT', 'ANDRUNINVANYA', 'ANDRYNAUMOV',
-           'ANDRY_VOLK', 'ANDSBXX30', 'ANDYDREWDANIELS', 'ANDYHASHTAGGER',
-           'ANDY_PUCHINSKYI', 'ANEELSSTRT', 'ANETTANOVGOROD', 'ANFINRUDSADIE',
-           'ANFISAMICKEY', 'ANFRAIZER', 'ANGEELISHET', 'ANGEELISTR',
-           'ANGELABACH991', 'ANGELA_LATTKE', 'ANGELIKAMUSI',
-           'ANGELIKOROTKOVA', 'ANGELINADARCY_', 'ANGELINALADOVA',
-           'ANGELISTRR', 'ANGELITHSS', 'ANGELOENOUGH', 'ANGISDOOYL',
-           'ANGTHEESTR', 'ANG__BOWERS', 'ANIIANTRS', 'ANISACRRUTR',
-           'ANISILOPE', 'ANISSNOVOTR', 'ANITABR1994', 'ANITALOVEHEART',
-           'ANJELICAFAMOUS', 'ANKIDINOVAKIRA', 'ANN1EMCCONNELL',
-           'ANNABEZGUZIKOVA', 'ANNAMARFINA', 'ANNAMINGT', 'ANNAROMAN0',
-           'ANNA_VYSOKAYA', 'ANNETTETEAL1', 'ANNIEISBEAR', 'ANNIEPOSHES',
-           'ANNIJONSTR', 'ANNSAM_SAM', 'ANNY_DUBI', 'ANN_HANAH',
-           'ANN__BOGDANOVA', 'ANORAVERD', 'ANOSSOVV', 'ANTHONYCANLASS',
-           'ANTHONYCARTR', 'ANTHONYWOODBOY', 'ANTIEHARMON', 'ANTONFROMSPB',
-           'ANTONHAYHAY', 'ANTONINAPERVAY', 'ANTONOVMENMENCO', 'ANTONRUMSS',
-           'ANTOSHAKARGIN', 'ANTYSHEVALIDA', 'ANWARGAFUR', 'ANWARJAMIL22',
-           'ANYA_ISA1282', 'ANZGRI', 'AN_NA__AN', 'AN_N_GASTON',
-           'APRIILDTRUT', 'APRRILSBRUSS', 'APUHNA', 'ARABMTR', 'ARAGARTRR',
-           'ARCHIEOLIVERS', 'ARESTOVEVG', 'ARGENTINACATLE1', 'ARIAANST',
-           'ARIANNA_PER_RY', 'ARIEENSLPE', 'ARIELLE_BROWNIN', 'ARIELSHINING',
-           'ARINA_RONDAL', 'ARISGRAYS', 'ARKADII_TROFIM', 'ARKADSHIHKIN',
-           'ARKHIPOVICHIVNA', 'ARKHIPOVTIOVEOF', 'ARMEDFREJYA', 'ARM_2_ALAN',
-           'ARNOLDPARRK', 'ARONHOLDEN8', 'ARONS_KWENDE', 'ARSENI_ROMAN',
-           'ARTAUTUMN', 'ARTEMBOGACHENKO', 'ARTEMMPLOTNIKOV', 'ARTEMSSFE',
-           'ARTEM_POLISHHUK', 'ARTHCLAUDIA', 'ARTKORCHUNOV', 'ARTURBURANOF',
-           'ARTUR__2014', 'ARTYRTOLSTOV', 'ARYANNAJ0NES', 'ARZHANOVAAA',
-           'ASDIQARUSSIYA', 'ASHLEECOLLINSS', 'ASHLEEYWES', 'ASHLEYSIMPSN',
-           'ASHLEY_KRI', 'ASSUNCAOWALLAS', 'ASWWIMMORRIS', 'ASYAARRIVE',
-           'ATIF_SHAIKH_ME', 'ATLANTA_ONLINE', 'ATULSCARPA', 'AURRLISTR',
-           'AUSTINLOVESBEER'], dtype=object)
-
-
+In the following few lines, I am sorting Twitter users by number of tweets in our dataset. This is so that I can choose two users with sufficient amount of tweets for an analysis.
 
 
 
@@ -324,29 +237,12 @@ troll_tweets = [list(data.loc[data['author'] == author_name, 'content'].values) 
 ```
 
 
-
-
-```python
-troll_tweets[1][0:5]
-```
-
-
-
-
-
-    ["RT ScottPresler: So, Hillary Clinton can delete 33,000 emails, have 13 mobile devices smashed &amp; FBI won't raid her home.  Democrat privileg…",
-     '#joness ANOTHER Islamic Migrant Charged For Trying to Help ISIS in Murder Plot https://t.co/X5XTyunJAr https://t.co/Z8lvklNT2f',
-     '#joness De Blasio’s Former Aide Just Spilled The Beans on his Former Boss https://t.co/LZbI0BDiUM https://t.co/TrqimiquQu',
-     '#joness BREAKING : McMaster Has Ties to SHARIA LAW Controlled Donors https://t.co/odF6Y6ozvy https://t.co/OQzuqcXB4z',
-     '#joness CNN Forced to Report BLISTERING Analysis of REELING Dem Party https://t.co/fzXfw1IYp3 https://t.co/9X9EBz475u']
-
-
-
 ## Load model
 
 
 
 ```python
+# Load model
 from models import InferSent
 model_version = 1
 MODEL_PATH = "../encoder/infersent%s.pkl" % model_version
@@ -360,6 +256,7 @@ model.load_state_dict(torch.load(MODEL_PATH))
 
 
 ```python
+# Keep it on CPU or put it on GPU
 use_cuda = False
 model = model.cuda() if use_cuda else model
 ```
@@ -368,6 +265,7 @@ model = model.cuda() if use_cuda else model
 
 
 ```python
+# If infersent1 -> use GloVe embeddings. If infersent2 -> use InferSent embeddings.
 W2V_PATH = '../dataset/GloVe/glove.840B.300d.txt' if model_version == 1 else '../dataset/fastText/crawl-300d-2M.vec'
 model.set_w2v_path(W2V_PATH)
 ```
@@ -376,6 +274,7 @@ model.set_w2v_path(W2V_PATH)
 
 
 ```python
+# Load embeddings of K most frequent words
 model.build_vocab_k_words(K=100000)
 ```
 
@@ -478,6 +377,7 @@ tfm_all_tweets.shape
 
 
 ```python
+# tfm_test = pca.transform(test_embed)
 ```
 
 
@@ -500,6 +400,7 @@ fig = plt.gcf()
 fig.set_size_inches(10, 7)
 _ = plt.scatter(tfm_all_tweets[0:troll1,0], tfm_all_tweets[0:troll1,1],  s=20, alpha=0.5, color='green', label='Identified Troll 1')
 _ = plt.scatter(tfm_all_tweets[troll1:(troll1 + troll2),0], tfm_all_tweets[troll1:(troll1 + troll2),1], s=20, alpha=0.5, color='red', label='Identified Troll 2')
+# _ = plt.scatter(tfm_all_tweets[(troll1 + troll2):all_troll,0], tfm_all_tweets[(troll1 + troll2):all_troll,1], s=25, alpha=0.45, color='k', label='Identified Troll 3')
 _ = plt.scatter(tfm_all_tweets[all_troll:,0], tfm_all_tweets[all_troll:,1], s=20, alpha=0.1, color='blue', label='Random Political Tweets')
 _ = plt.legend(loc='best', fontsize=14)
 _ = plt.xlabel('Principal Component 1', fontsize=14)
