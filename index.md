@@ -98,7 +98,7 @@ performed the best, with the neural network coming in a close second. It is also
 Logistic Regression and Naive Bayes models fit the data in less than 10 seconds on a 6-core  machine, while SVM
 takes 40 minutes on the same machine. On a GPU, the neural network takes roughly 3-4 minutes to fit.
 
-|       |  Random Split  |  Temporal Split  |
+|       |  Random Split | |  Temporal Split  | |
 | Model | Train | Test | Train | Test |
 |:-----:|:-----:|:----:|:-----:|:----:|
 |Naive Bayes (BoW) | 96.0 | 88.1 | 95.3 | 84.4 |
@@ -109,7 +109,7 @@ takes 40 minutes on the same machine. On a GPU, the neural network takes roughly
 
 Since Logistic Regression is an easily interpretable model (the coefficients of a feature represent the log-odds
 for the predicted probability), we were able to extract the top 10 most important features in predicting
-trolls and non-trolls. It is exciting that some of the features and words we identified in EDA showed up [here](https://joeddav.github.io/troll_classification/logistic_regression.html#analysis-of-coefficients).
+trolls and non-trolls. It is exciting that some of the features and words we identified in EDA showed up [here](https://joeddav.github.io/troll_classification/LogisticRegression.html#analysis-of-coefficients).
 
 ### Conclusions
 
