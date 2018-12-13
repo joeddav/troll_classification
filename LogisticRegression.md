@@ -1,6 +1,6 @@
 ---
 title: Logistic Regression
-nav_include: 6
+nav_include: 5
 notebook: notebooks/LogisticRegression.ipynb
 ---
 
