@@ -106,18 +106,23 @@ takes 40 minutes on the same machine. On a GPU, the neural network takes roughly
 |Naive Bayes (BoW) | 96.0 | 88.1 | 95.3 | 84.4 |
 |Naive Bayes (TF-IDF) | 95.1 | 85.8 | 96.0 | 80.3 |
 |Logistic Regression (BoW) | **97.3** | **96.7** | **97.5** | **95.9** |
-|SVM (BoW) | 0.0 | 0.0 | 0.0 | 0.0 |
+|SVM (BoW) | 0.0 | 92.9 | 0.0 | 0.0 |
 |Neural Net (Embedding) | 96.4 | 96.1 | 96.5 | 95.3 |
 
 A few things to note are:
   - Logistic Regression with simple BoW performed the best in every setting
   - Neural Net with embeddings was very close behind
   - Naive Bayes overfits quite strongly, even after tuning regularization parameters by [cross-validation](https://joeddav.github.io/troll_classification/naive_bayes_clean.html#training-and-testing-the-model)
-  - SVM does not overfit, but is computationally slow and does not perform very well in comparison
+  - SVM does not overfit, but is computationally very slow, and does not perform as well as other methods
+  - TF-IDF performed worse on our baseline Naive Bayes than BoW, so we adopted BoW for SVM and Logistic Regression
+  - All models perform worse on the temporal split test set. This is intuitively what we expected as it should in general be
+    more difficult to "generalize into the future", a testament to the added difficulty of doing this in a real-world setting
 
 Since Logistic Regression is an easily interpretable model (the coefficients of a feature represent the log-odds
 for the predicted probability), we were able to extract the top 10 most important features in predicting
 trolls and non-trolls. It is exciting that some of the features and words we identified in EDA showed up [here](https://joeddav.github.io/troll_classification/LogisticRegression.html#analysis-of-coefficients).
+
+We also provide some interesting visualizations of the principal components of the neural network's [here](https://joeddav.github.io/troll_classification/TwitterNet_Sentence_Embeddings.html#introduction).
 
 ### Conclusions
 
