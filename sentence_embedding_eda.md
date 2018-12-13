@@ -18,7 +18,7 @@ This notebook contains code for our preliminary EDA using sentence embeddings. W
 
 
 **Fig. 1: First Two Principal Components of Sentence Embeddings of two Confirmed Trolls and ~10k other political tweets**
-<img src='images/sentence_eda.png' height='500' width='700'>
+<img src='pics/sentence_eda.png' height='500' width='700'>
 
 ## Code use for our Sentence Embeddings EDA
 

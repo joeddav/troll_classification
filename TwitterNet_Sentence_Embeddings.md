@@ -20,7 +20,7 @@ Encouraged by the discrimnatory power of sentence embeddings observed in our pre
 **Fig. 1: First Two Principal Components of Outputs of Layers of Trained TwitterNet**
 We used Random Train-Test-Val split for this experiment.
 
-<img src="images/layers_random_idx_embed.png" height="600" width="800">
+<img src="pics/layers_random_idx_embed.png" height="600" width="800">
 
 
 ### Data
@@ -59,13 +59,13 @@ Below we show the accuracy plots for the three experiments summarized above. Usi
 
 
 **Fig. 2: TwitterNet with Sentence Embeddings and Random Train-Test-Val Split**
-<img src="images/random_idx_acc.png" height="300" width="500">
+<img src="pics/random_idx_acc.png" height="300" width="500">
 
 **Fig. 3: TwitterNet with Sentence Embeddings and Temporal Train-Test-Val Split**
-<img src="images/temporal_idx_acc.png" height="300" width="500">
+<img src="pics/temporal_idx_acc.png" height="300" width="500">
 
 **Fig. 4: TwitterNet with Random Gaussian Vectors in place of Sentence Embeddings and Random Train-Test-Val Split**
-<img src="images/no_embed_acc.png" height="300" width="500">
+<img src="pics/no_embed_acc.png" height="300" width="500">
 
 ## Code
 
