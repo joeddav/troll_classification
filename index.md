@@ -81,7 +81,7 @@ our measure of performance. We test three methods for representing the text comp
 
 And we fit four different models:
 
-- Baseline [Naive Bayes](https://joeddav.github.io/troll_classification/naive_bayes.html)
+- Baseline [Naive Bayes](https://joeddav.github.io/troll_classification/naive_bayes_clean.html)
 
 - [Logistic Regression](https://joeddav.github.io/troll_classification/LogisticRegression.html)
 
@@ -93,8 +93,8 @@ We invite you to click on the above links for an in-depth look at each of the me
 
 ### Results
 
-Below we present the percent accuracy in classifying troll vs. non-troll. As you can see, Logistic Regression
-performed the best, with the neural network coming in a close second. It is also interesting to note that the
+Below we present the percent accuracy in classifying troll vs. non-troll. As you can see, [Logistic Regression](https://joeddav.github.io/troll_classification/LogisticRegression.html)
+performed the best, with the [neural network](https://joeddav.github.io/troll_classification/TwitterNet_Sentence_Embeddings.html) coming in a close second. It is also interesting to note that the
 Logistic Regression and Naive Bayes models fit the data in less than 10 seconds on a 6-core  machine, while SVM
 takes 40 minutes on the same machine. On a GPU, the neural network takes roughly 3-4 minutes to fit.
 
@@ -106,6 +106,12 @@ takes 40 minutes on the same machine. On a GPU, the neural network takes roughly
 |Logistic Regression (BoW) | **97.3** | **96.7** | **97.5** | **95.9** |
 |SVM (BoW) | 0.0 | 0.0 | 0.0 | 0.0 |
 |Neural Net (Embedding) | 96.4 | 96.1 | 96.5 | 95.3 |
+
+A few things to note are:
+  - Logistic Regression with simple BoW performed the best in every setting
+  - Neural Net with embeddings was very close behind
+  - Naive Bayes overfits quite strongly, even after tuning regularization parameters by [cross-validation](https://joeddav.github.io/troll_classification/naive_bayes_clean.html#training-and-testing-the-model)
+  - SVM does not overfit, but is computationally slow and does not perform very well in comparison
 
 Since Logistic Regression is an easily interpretable model (the coefficients of a feature represent the log-odds
 for the predicted probability), we were able to extract the top 10 most important features in predicting
@@ -129,7 +135,7 @@ Finally, we are pleased that when we test on a temporal split of the data we sti
 A concern of ours from the onset of this investigation was that our model might learn some underlying distribution of
 topics (that are correlated with the date/time the tweet is posted at) and not what we truly cared about: trolls invariant
 to the topic. Since our models do well in the case where the tweets span a new range of dates in the future, we can say
-with confidence that it has learned some kind of generalization!
+with confidence that it has learned some kind of sensible generalization!
 
 ### Future Work
 
