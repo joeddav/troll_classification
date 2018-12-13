@@ -9,6 +9,7 @@ notebook: notebooks/Dataset\ Consolidation.ipynb
 *  
 {: toc}
 
+
 ```python
 import numpy as np
 import pandas as pd
@@ -28,14 +29,14 @@ We need to consolidate our data from two sources into a single file. Here, I do 
 
 
 ```python
-non_troll_df = pd.read_json('./non_troll_data_simplified_v4.json')
+non_troll_df = pd.read_json('../data/non_troll_data_simplified_v4.json')
 ```
 
 
 
 
 ```python
-troll_df = pd.read_csv('./troll_jun_to_nov_v2.csv', index_col=1)
+troll_df = pd.read_csv('../data/troll_jun_to_nov_v2.csv', index_col=1)
 ```
 
 
@@ -143,7 +144,7 @@ merged_df.troll.value_counts()
 
 
 ```python
-merged_df.to_csv('merged_troll_data.csv')
+merged_df.to_json('../data/merged_troll_data.json')
 ```
 
 
