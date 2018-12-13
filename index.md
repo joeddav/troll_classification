@@ -52,9 +52,9 @@ and whether or not the tweet is a retweet. An example of the features we use to 
 
 To make things more interesting, we do two different types of data splitting: random and temporal.
 
-- Random: this is the classic train/val/test split, with completely uniform selection.
+- **Random:** this is the classic train/val/test split, with completely uniform selection.
 
-- Temporal: train on tweets before time $T$, and test on tweets after time $T$
+- **Temporal:** train on tweets before time $T$, and test on tweets after time $T$
   - By doing this, we simulate the real-life scenario where we have collected training data and wish to
     predict troll/non-troll from new data, where the distribution of topics/content may have changed over time.
 
@@ -66,12 +66,14 @@ In summary, the number of tweets and label proportions (% trolls) in each split 
 | Temporal | 266003 | 33250 | 33251 | 66 |
 
 As you can see, we chose the temporal split such that the dataset sizes would be equal, and this resulted in a
-higher proportion of trolls (but still reasonable) in the temporal set.
+higher proportion of trolls (but still reasonable) in the temporal set. See [EDA](https://joeddav.github.io/troll_classification/more_eda.html) and [cleaning](https://joeddav.github.io/troll_classification/Dataset%20Consolidation.html)
+for more info.
 
 ### Models
 
 The general goal in this project is to predict $P(troll|tweet)=P(y|X)$, with classification accuracy as
-our measure of performance. We test three methods for representing the text component of $X$:
+our measure of performance. We test three methods for representing the text component of $X$ (if you are
+unfamiliar with any of these methods, Google returns a plethora of useful results):
 
 - Bag-of-Words (BoW)
 
