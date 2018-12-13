@@ -107,7 +107,7 @@ takes 40 minutes on the same machine. On a GPU, the neural network takes roughly
 |Naive Bayes (BoW) | 96.0 | 88.1 | 95.3 | 84.4 |
 |Naive Bayes (TF-IDF) | 95.1 | 85.8 | 96.0 | 80.3 |
 |Logistic Regression (BoW) | **97.3** | **96.7** | **97.5** | **95.9** |
-|SVM (BoW) | 0.0 | 92.9 | 0.0 | 0.0 |
+|SVM (BoW) | 93.1 | 92.9 | 87.7 | 87.5 |
 |Neural Net (Embedding) | 96.4 | 96.1 | 96.5 | 95.3 |
 
 A few things to note are:
