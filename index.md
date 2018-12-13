@@ -8,7 +8,7 @@ Welcome to our CS209a Project: Twitter Troll Detection!
 - Code available on [GitHub](https://github.com/joeddav/troll_classification)
 
 ## Group Members
-- Joe Davidson
+- Joe Davison
 - Julien Laasri
 - Abhimanyu Talwar
 - Dylan Randle
