@@ -5,6 +5,7 @@ title: Detecting Trolls, Saving Democracy
 ![seas-iacs](pics/SEAS_IACS.png)
 
 Welcome to our CS209a Project: Twitter Troll Detection!
+- Code available on [GitHub](https://github.com/joeddav/troll_classification)
 
 ## Group Members
 - Joe Davidson
@@ -33,7 +34,7 @@ investigation. The vast majority of the tweets in this dataset were posted from 
 ### Method
 
 Using the FiveThirtyEight data as positive-troll examples, we have collected an equally large set of
-tweets through various search queries (using the [Tweepy API](https://tweepy.readthedocs.io/en/v3.5.0/)) relating to the 2016 election ([here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FPDI7IN)). We use
+tweets through various search queries relating to the 2016 election (see [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FPDI7IN) and [here](https://github.com/joeddav/troll_classification/blob/master/notebooks/tweepy_script.ipynb)). We use
 these data as negative-troll examples. We are well aware that this non­-troll dataset may in fact include
 trolls, but these concerns are dampened by the fact that the overall population of trolls is relatively
 small compared to regular users, and that Twitter actively removes tweets from troll users (resulting in
