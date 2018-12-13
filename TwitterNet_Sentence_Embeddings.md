@@ -1,6 +1,6 @@
 ---
 title: TwitterNet
-nav_include: 4
+nav_include: 5
 notebook: notebooks/TwitterNet_Sentence_Embeddings.ipynb
 ---
 
